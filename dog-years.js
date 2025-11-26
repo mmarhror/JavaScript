@@ -3,22 +3,19 @@ function dogYears(planet, dogAge) {
 
   switch (planet) {
     case "mercury":
-      return age * 0.2408467;
+      age *= 0.2408467;
     case "venus":
-      return age * 0.61519726;
+      age *= 0.61519726;
     case "mars":
-      return age * 1.8808158;
+      age *= 1.8808158;
     case "jupiter":
-      return age * 11.862615;
+      age *= 11.862615;
     case "saturn":
-      return age * 29.447498;
+      age *= 29.447498;
     case "uranus":
-      return age * 84.016846;
+      age *= 84.016846;
     case "neptune":
-      return age * 164.79132;
-    default:
-      return age;
+      age *= 164.79132;
   }
+  return Math.round(age * 100) / 100;
 }
-
-console.log(dogYears('earth', 1000000000))
