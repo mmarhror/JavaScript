@@ -1,5 +1,5 @@
 function dogYears(planet, dogAge) {
-  const age = (dogAge / 31557600) * 7;
+  const age = (dogAge / 60 / 60 / 24 / 365) * 7;
 
   switch (planet) {
     case "mercury":
@@ -21,4 +21,4 @@ function dogYears(planet, dogAge) {
   }
 }
 
-console.log(dogYears('earth', 1000000000))
+console.log(dogYears("earth", 1000000000));
