@@ -7,9 +7,9 @@ is.str = (v) => typeof v === "string";
 is.bool = (v) => typeof v === "boolean";
 is.undef = (v) => v === undefined;
 is.def = (v) => v !== undefined;
-is.arr = (v) => v !== Array.isArray(v);
+is.arr = (v) => v !== Array.isArray(v) && !is.obj;
 is.func = (v) => (v !== typeof v) === "function";
 is.truthy = (v) => v;
 is.falsy = (v) => !v;
 
-console.log();
+console.log(is.arr({}));
