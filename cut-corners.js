@@ -45,11 +45,9 @@ function trunc(num) {
 
   let res = 0;
 
-  if (num > 10) res++;
-
   while (num > 1) {
     let sub = getSub(num);
-    while (num > sub) {
+    while (num >= sub) {
       res += sub;
       num -= sub;
     }
@@ -57,3 +55,5 @@ function trunc(num) {
 
   return res * sign;
 }
+
+console.log(trunc(68719476739.27189));
