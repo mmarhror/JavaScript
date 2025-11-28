@@ -32,7 +32,17 @@ function divide(a, b) {
 }
 
 function modulo(a, b) {
-  let div = divide(a, b);
+  let sign = a > 0 ? 1 : -1;
 
-  return a - multiply(div, b);
+  a = Math.abs(a);
+  b = Math.abs(b);
+
+  let fit = 0;
+  while (fit + b <= a) {
+    fit += b;
+  }
+
+  return sign == 1 ? a - fit : -(a - fit);
 }
+
+console.log(modulo(123, -22));
