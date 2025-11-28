@@ -15,6 +15,7 @@ function lastIndexOf(arr, val, beg) {
     beg = arr.length - 1;
   }
   for (let i = beg; i >= 0; i--) {
+    console.log(arr[i]);
     if (arr[i] === val) {
       return i;
     }
@@ -25,3 +26,7 @@ function lastIndexOf(arr, val, beg) {
 function includes(arr, val, beg) {
   return indexOf(arr, val, beg) !== -1;
 }
+
+let t = "b"
+
+console.log(lastIndexOf([0, 0, t, t], t, 3));
