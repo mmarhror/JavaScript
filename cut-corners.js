@@ -44,16 +44,15 @@ function trunc(num) {
   }
 
   let res = 0;
+  let sub = getSub(num);
 
   while (num > 1) {
-    let sub = getSub(num);
     while (num >= sub) {
       res += sub;
       num -= sub;
     }
+    sub /= 10;
   }
 
   return res * sign;
 }
-
-console.log(trunc(68719476739.27189));
