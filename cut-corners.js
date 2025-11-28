@@ -1,24 +1,3 @@
-function get
-
-function trunc(num) {
-  if (num === 0) return 0;
-
-  let sign = 1;
-  if (num < 0) {
-    sign = -1;
-    num = -num;
-  }
-
-  let deg = 0;
-
-  while (num > 1) {
-    deg++;
-    num--;
-  }
-
-  return deg * sign;
-}
-
 function ceil(num) {
   if (num === 0) return 0;
 
@@ -45,8 +24,36 @@ function round(num) {
   return num >= 0 ? tr : -tr;
 }
 
-// const nums = [4, -3, 3, -2, 0];
-// console.log(nums.map(round));
-// console.log(nums.map(floor));
-// console.log(nums.map(trunc));
-// console.log(nums.map(ceil));
+function getSub(num) {
+  let sub = 1;
+
+  while (num > 10) {
+    num /= 10;
+    sub *= 10;
+  }
+  return sub;
+}
+
+function trunc(num) {
+  if (num === 0) return 0;
+
+  let sign = 1;
+  if (num < 0) {
+    sign = -1;
+    num = -num;
+  }
+
+  let res = 0;
+
+  if (num > 10) res++;
+
+  while (num > 1) {
+    let sub = getSub(num);
+    while (num > sub) {
+      res += sub;
+      num -= sub;
+    }
+  }
+
+  return res * sign;
+}
