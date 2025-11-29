@@ -1,3 +1,5 @@
+const add4 = "+4";
+const mul2 = "*2";
 function findExpression(num) {
   if (num === 1) {
     return "1";
@@ -18,3 +20,5 @@ function findExpression(num) {
     return res + " " + add4;
   }
 }
+
+console.log(findExpression(1960));
