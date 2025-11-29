@@ -5,6 +5,7 @@ function flat(arr, depth = 1) {
 
   let temp = [];
   let flag = false;
+
   for (let i = 0; i < arr.length; i++) {
     if (Array.isArray(arr[i])) {
       flag = true;
