@@ -1,6 +1,4 @@
-let depth = 0;
-
-function pyramid(str, n) {
+function pyramid(str, n, depth = n) {
   if (n > depth) {
     depth = n;
   }
@@ -9,5 +7,5 @@ function pyramid(str, n) {
     return " ".repeat((depth - n) * str.length) + str;
   }
   let res = " ".repeat((depth - n) * str.length) + str.repeat(n * 2 - 1);
-  return pyramid(str, n - 1) + "\n" + res;
+  return pyramid(str, n - 1, depth) + "\n" + res;
 }
