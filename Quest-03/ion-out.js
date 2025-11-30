@@ -4,3 +4,4 @@ function ionOut(str) {
   let match = str.match(query);
   return match === null ? [] : match;
 }
+  
