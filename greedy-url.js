@@ -1,5 +1,5 @@
 function getURL(str) {
-  const query = /https?:\/\/[\w]+.[\S]+/g;
+  const query = /https?:\/\/[\S]+/g;
   return str.match(query);
 }
 
