@@ -1,25 +1,33 @@
 const days = {
-  0: "Sunday",
-  1: "Monday",
-  2: "Tuesday",
-  3: "Wednesday",
-  4: "Thursday",
-  5: "Friday",
-  6: "Saturday",
+  0: "Monday",
+  1: "Tuesday",
+  2: "Wednesday",
+  3: "Thursday",
+  4: "Friday",
+  5: "Saturday",
+  6: "Sunday",
 
-  7: "SecondSunday",
-  8: "SecondMonday",
-  9: "SecondTuesday",
-  10: "SecondWednesday",
-  11: "SecondThursday",
-  12: "SecondFriday",
-  13: "SecondSaturday",
+  7: "secondMonday",
+  8: "secondTuesday",
+  9: "secondWednesday",
+  10: "secondThursday",
+  11: "secondFriday",
+  12: "secondSaturday",
+  13: "secondSunday",
 };
 
 function addWeek(date) {
   let epoch = new Date("0001-01-01");
   let dif = date - epoch;
-  return dif / 1000 / 60 / 60 / 24;
+  dif = dif / 1000 / 60 / 60 / 24;
+
+  return days[dif % 14];
 }
-// addWeek(new Date("0001-01-07"));
-console.log(addWeek(new Date("2001-01-1")));
+
+function timeTravel(time) {
+  let date = time.date;
+  let year = date.getFullYear();
+  let month = date.getMonth();
+  let day = date.getDate();
+  return new Date(year, month, day, time.hour, time.minute, time.second);
+}
