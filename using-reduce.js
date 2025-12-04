@@ -3,13 +3,10 @@ function adder(arr, num = 0) {
 }
 
 function sumOrMul(arr, num = 0) {
-  return arr.reduce((acc, elem) => {
-    if (elem % 2 === 0) {
-      return acc * elem;
-    } else {
-      return acc + elem;
-    }
-  }, num);
+  return arr.reduce(
+    (acc, elem) => (elem % 2 === 0 ? acc * elem : acc + elem),
+    num
+  );
 }
 
 function funcExec(arr, num = 0) {
