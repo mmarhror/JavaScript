@@ -7,7 +7,7 @@ function map(arr, func) {
   return res;
 }
 
-const add1 = (el) => el + 1;
-const sub3 = (el) => el - 3;
-const mult2 = (el) => el * 2;
+const add = (el) => el + 1;
+const sub = (el) => el - 3;
+const mult = (el) => el * 2;
 
