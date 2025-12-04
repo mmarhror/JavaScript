@@ -1,19 +1,19 @@
-function adder(arr, acc = 0) {
-  if (arr.length === 0) {
-    return 0;
-  }
-  return arr.reduce((acc, elem) => acc + elem, acc);
+function adder(arr, num = 0) {
+  return arr.reduce((acc, elem) => acc + elem, num);
 }
 
-function sumOrMul(arr, acc) {
-  return arr.reduce(
-    (acc, elem) => (elem % 2 === 0 ? acc * elem : acc + elem),
-    acc
-  );
+function sumOrMul(arr, num = 0) {
+  return arr.reduce((acc, elem) => {
+    if (elem % 2 === 0) {
+      return acc * elem;
+    } else {
+      return acc + elem;
+    }
+  }, num);
 }
 
-function funcExec(arr, acc = 0) {
-  return arr.reduce((acc, func) => func(acc), acc);
+function funcExec(arr, num = 0) {
+  return arr.reduce((acc, func) => func(acc), num);
 }
 
-console.log(sumOrMul([29, 23, 3, 2, 25]));
+console.log(sumOrMul([8, 16, 7, 0, 32]));
