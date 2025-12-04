@@ -1,7 +1,13 @@
 function countLeapYears(date) {
-  let time = date.getTime();
+  let year = date.getFullYear();
+  let cnt = 0;
 
-  return Math.abs(time);
+  year--
+  while (year > 1) {
+    if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
+      cnt++;
+    }
+    year--;
+  }
+  return cnt;
 }
-
-console.log(countLeapYears(new Date("0001-12-01")));
