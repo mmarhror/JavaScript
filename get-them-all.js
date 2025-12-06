@@ -1,8 +1,18 @@
-function getArchitects() {
+export function getArchitects() {
   let a = document.getElementsByTagName("a");
-    for (let i = 0; i < a.length; i++) {
-        console.log(a[i].textContent);
-    }
+  let notA = document.body.querySelectorAll(":not(a)");
+
+  return [a, notA];
 }
 
+export function getClassical() {
+  let a = document.body.getElementsByClassName("classical");
+  let notA = document.body.querySelectorAll("a:not(.classical)");
+
+  return [a, notA];
+}
+
+export function getActive() {}
+
 getArchitects();
+getClassical();
