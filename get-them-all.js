@@ -13,15 +13,17 @@ export function getClassical() {
 }
 
 export function getActive() {
-  let a = Array.from(document.body.querySelectorAll("a.active"));
-  let notA = Array.from(document.body.querySelectorAll("a:not(.active)"));
+  let a = Array.from(document.body.querySelectorAll("a.classical.active"));
+  let notA = Array.from(
+    document.body.querySelectorAll("a.classical:not(.active)")
+  );
 
   return [a, notA];
 }
 
 export function getBonannoPisano() {
-  let a = Array.from(document.body.querySelectorAll("a#BonannoPisano"));
-  let notA = Array.from(document.body.querySelectorAll("a:not(#BonannoPisano)"));
+  let a = Array.from(document.body.querySelector("a#BonannoPisano"));
+  let notA = Array.from(document.body.querySelectorAll("a.classical.active"));
 
   return [a, notA];
 }
