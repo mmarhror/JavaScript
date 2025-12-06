@@ -6,7 +6,7 @@ export function build(amount) {
     div.id = `brick-${id}`;
 
     if (id % 3 === 2) {
-      div.setAttribute("foundation", "true");
+      div.setAttribute("data-foundation", "true");
     }
 
     document.body.appendChild(div);
@@ -26,11 +26,11 @@ export function repair(...ids) {
       continue;
     }
 
-    let isMiddle = elem.getAttribute("foundation");
+    let isMiddle = elem.getAttribute("data-foundation");
     if (isMiddle) {
-      elem.setAttribute("repaired", "in progress");
+      elem.setAttribute("data-repaired", "in progress");
     } else {
-      elem.setAttribute("repaired", true);
+      elem.setAttribute("data-repaired", true);
     }
   }
 }
