@@ -1,14 +1,12 @@
 export function build(amount) {
   let id = 1;
-  let cnt = -1;
 
   let int = setInterval(() => {
     let div = document.createElement("div");
     div.id = `brick-${id}`;
 
-    if (cnt === 3 || id === 2) {
+    if (id % 3 === 2) {
       div.setAttribute("foundation", "true");
-      cnt = 0;
     }
 
     document.body.appendChild(div);
@@ -17,7 +15,6 @@ export function build(amount) {
       clearInterval(int);
     }
     id++;
-    cnt++;
   }, 100);
 }
 
