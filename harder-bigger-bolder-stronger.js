@@ -9,7 +9,8 @@ export function generateLetters() {
       let div = document.createElement("div");
       div.textContent = alph[n];
       div.style.fontWeight = fontW[i];
-      div.style.fontSize = String(fontS);
+      console.log(fontS);
+      div.style.fontSize = String(fontS) + "px";
       document.body.appendChild(div);
       fontS++;
     }
