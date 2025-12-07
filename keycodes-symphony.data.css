@@ -1,3 +1,4 @@
+
 :root {
   --background: hsl(0, 0%, 12%);
   --text: hsl(0, 0%, 80%);
@@ -18,22 +19,19 @@ body {
   background: var(--background);
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  align-content: center;
   width: 100vw;
-  padding: 5rem;
-  font-size: 12px;
+  height: 100vh;
 }
 
-div {
-  cursor: pointer;
-  width: 150px;
-  height: 150px;
-  margin: 20px;
-  padding: 5px 8px;
-  border-radius: 50%;
-
+.note {
+  width: 100%;
+  flex: 1 1 80px;
   display: flex;
-  justify-content: center;  
+  justify-content: center;
   align-items: center;
+  text-align: center;
+  padding: 15px;
+  font-size: 40px;
+  color: white;
+  transition: all 0.2s ease-in-out;
 }
