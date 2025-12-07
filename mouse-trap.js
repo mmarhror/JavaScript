@@ -2,7 +2,7 @@ export function createCircle() {
   document.addEventListener("click", (event) => {
     inside = false;
     let div = document.createElement("div");
-    div.style.backgroundColor = "white";
+    div.style.background = "white";
     div.classList = "circle";
 
     let x = event.clientX;
@@ -47,10 +47,8 @@ export function moveCircle() {
     let circleDims = circle.getBoundingClientRect();
 
     if (circleInsideBox(circleDims, boxDims)) {
-      circle.style.backgroundColor = "var(--purple)";
+      circle.style.background = "var(--purple)";
       inside = true;
-    } else {
-      circle.style.backgroundColor = "white";
     }
 
     let max = {
