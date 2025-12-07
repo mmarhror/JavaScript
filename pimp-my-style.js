@@ -20,7 +20,7 @@ export function pimp() {
     button.classList.toggle("unpimp");
     index++;
   }
-  if (index === styles.length - 1) {
+  if (index === styles.length) {
     unpimp = true;
     button.classList.toggle("unpimp");
     index--;
