@@ -31,18 +31,21 @@ export function pick() {
   document.body.addEventListener("mousemove", (mouse) => {
     let d = document.body.getBoundingClientRect();
 
-    let hueV = Math.round(mouse.x * (360 / d.width));
-    let limV = Math.round(mouse.y * (100 / d.height));
+    let x = mouse.clientX;
+    let y = mouse.clientY;
 
-    axisX.setAttribute("x1", mouse.x - window.innerWidth);
-    axisX.setAttribute("y1", mouse.y);
-    axisX.setAttribute("x2", mouse.x + window.innerWidth);
-    axisX.setAttribute("y2", mouse.y);
+    let hueV = Math.round(x * (360 / d.width));
+    let limV = Math.round(y * (100 / d.height));
 
-    axisY.setAttribute("x1", mouse.x);
-    axisY.setAttribute("y1", mouse.y - window.innerWidth);
-    axisY.setAttribute("x2", mouse.x);
-    axisY.setAttribute("y2", mouse.y + window.innerWidth);
+    axisX.setAttribute("x1", x);
+    axisX.setAttribute("x2", x);
+    axisX.setAttribute("y1", 0);
+    axisX.setAttribute("y2", window.innerWidth);
+
+    axisY.setAttribute("x1", 0);
+    axisY.setAttribute("x2", window.innerHeight);
+    axisY.setAttribute("y1", y);
+    axisY.setAttribute("y2", y);
 
     bg = `hsl(${hueV},100%,${limV}%)`;
 
