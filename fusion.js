@@ -60,27 +60,3 @@ function fusion(obj1, obj2) {
 
   return res;
 }
-
-// console.log(fusion({ arr: [1, "2"] }, { arr: [2] }));
-// console.log(fusion({ str: "salem" }, { str: "alem" }));
-// console.log(fusion({ a: 10, b: 8, c: 1 }, { a: 10, b: 2 }));
-console.log(fusion({ a: { b: 1 } }, { a: 1 }));
-console.log(fusion({ a: 1 }, { a: { b: 1 } }));
-// console.log(
-//   fusion(
-//     {
-//       a: {
-//         b: [3, 2],
-//         c: { d: 8 },
-//       },
-//     },
-//     {
-//       a: {
-//         b: [0, 3, 1],
-//         c: { d: 3 },
-//       },
-//     }
-//   )
-// );
-
-// ); // -> { a: { b: [ 3, 2, 0, 3, 1 ], c: { d: 11 } } }
