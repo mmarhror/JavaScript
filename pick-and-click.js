@@ -16,12 +16,17 @@ export function pick() {
   svg.classList = "svg";
   document.body.appendChild(svg);
 
-  let horLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
-  let verLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
-  horLine.classList = "line";
-  verLine.classList = "line";
-  svg.appendChild(horLine);
-  svg.appendChild(verLine);
+  let axisX = document.createElementNS("http://www.w3.org/2000/svg", "line");
+  let axisY = document.createElementNS("http://www.w3.org/2000/svg", "line");
+
+  axisX.classList = "line";
+  axisY.classList = "line";
+
+  axisX.id = "axisX";
+  axisY.id = "axisY";
+
+  svg.appendChild(axisX);
+  svg.appendChild(axisY);
 
   document.body.addEventListener("mousemove", (mouse) => {
     let d = document.body.getBoundingClientRect();
@@ -29,15 +34,15 @@ export function pick() {
     let hueV = Math.round(mouse.x * (360 / d.width));
     let limV = Math.round(mouse.y * (100 / d.height));
 
-    horLine.setAttribute("x1", mouse.x - window.innerWidth);
-    horLine.setAttribute("y1", mouse.y);
-    horLine.setAttribute("x2", mouse.x + window.innerWidth);
-    horLine.setAttribute("y2", mouse.y);
+    axisX.setAttribute("x1", mouse.x - window.innerWidth);
+    axisX.setAttribute("y1", mouse.y);
+    axisX.setAttribute("x2", mouse.x + window.innerWidth);
+    axisX.setAttribute("y2", mouse.y);
 
-    verLine.setAttribute("x1", mouse.x);
-    verLine.setAttribute("y1", mouse.y - window.innerWidth);
-    verLine.setAttribute("x2", mouse.x);
-    verLine.setAttribute("y2", mouse.y + window.innerWidth);
+    axisY.setAttribute("x1", mouse.x);
+    axisY.setAttribute("y1", mouse.y - window.innerWidth);
+    axisY.setAttribute("x2", mouse.x);
+    axisY.setAttribute("y2", mouse.y + window.innerWidth);
 
     bg = `hsl(${hueV},100%,${limV}%)`;
 
