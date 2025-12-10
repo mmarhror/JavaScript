@@ -4,10 +4,6 @@ function toSnakeCase(str = "") {
   return words.join("_");
 }
 
-function parseRequest() {
-    
-}
-
 function getQuestions(str, all) {
   let parts = str.split(" - ");
   let request = parts[0];
@@ -18,15 +14,19 @@ function getQuestions(str, all) {
 }
 
 function neuron(arr) {
-  let quests = [];
-  let orders = [];
-
   let all = {};
 
-  getQuestions(arr[0]);
+  arr.forEach((elem) => {
+    let type = elem.match(/[^:]+/)[0].toLowerCase();
 
-  for (const elem of arr) {
-  }
+    if (!all[type]) {
+      all[type] = [];
+    }
+
+    all[type].push(elem);
+  });
+
+  console.log(all);
 }
 
 neuron([
