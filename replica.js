@@ -1,13 +1,18 @@
-function replica(trgt, ...objs) {
-  for (const elem of objs) {
-    for (const key in elem) {
-      let val = elem[key];
-      if (val || val.constructor.name === "Object" || Array.isArray(val)) {
-      }
-      trgt[key] = elem[key];
-    }
-  }
-  return trgt;
+function isObject(elem) {
+  return elem && elem.constructor.name === "Object";
 }
 
-console.log(replica({ a: { b: 1, c: 2 } }, { a: { c: 23 } }));
+function replica(trgt, ...objs) {
+  if (objs.length === 0) {
+    return trgt;
+  }
+  let obj = objs[0];
+  for (const key in obj) {
+    if (isObject(trgt[key]) && isObject(obj[key])) {
+      trgt[key] = { ...trgt[key], ...obj[key] };
+    } else {
+      trgt[key] = obj[key];
+    }
+  }
+  return replica(trgt, ...objs.slice(1));
+}
