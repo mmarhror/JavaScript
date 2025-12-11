@@ -32,14 +32,3 @@ function opDebounce(func, gap, ops = {}) {
     }, gap);
   };
 }
-
-function hi() {
-  console.log("hey");
-}
-
-let f = opDebounce(hi, 300, { leading: true });
-
-f();
-f();
-f();
-f();
