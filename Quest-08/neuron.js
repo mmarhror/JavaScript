@@ -30,7 +30,7 @@ function neuron(arr) {
 
     parseRequests(all[type], type.slice(0, type.length - 1), elem);
   }
-  
+
   return all;
 }
 
@@ -39,11 +39,3 @@ function parseType(msg) {
 
   return type.toLowerCase();
 }
-
-// neuron([
-//   "Questions: what is ounces? - Response: Ounce, unit of weight in the avoirdupois system",
-//   "Questions: what is ounces? - Response: equal to 1/16 pound (437 1/2 grains)",
-//   "Questions: what is Mud dauber - Response: Mud dauber is a name commonly applied to a number of wasps",
-//   "Orders: shutdown! - Response: Yes Sr!",
-//   "Orders: Quote something! - Response: Pursue what catches your heart, not what catches your eyes.",
-// ]);
