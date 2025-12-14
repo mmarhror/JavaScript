@@ -1,28 +1,32 @@
-function throttle(func, gap) {
-  let allowed = true;
+function throttle(func, delay) {
+  let timeout = null;
 
   return function (...args) {
-    if (allowed) {
-      func(...args);
-      allowed = false;
-    }
-    setTimeout(() => {
-      allowed = true;
-    }, gap);
+    //
+    if (timeout) return;
+    func(...args);
+    //
+    timeout = setTimeout(() => {
+      //
+      timeout = null;
+      //
+    }, delay);
   };
 }
 
-function opThrottle(func, gap, ops = {}) {
-  let time = null;
+function opThrottle(func, delay, ops = { trailing: false }) {
+  let timeout = null;
 
   return function (...args) {
-    if (!time) {
-      if (ops.leading) func(...args);
-
-      time = setTimeout(() => {
-        if (!ops.leading) func(...args);
-        time = null;
-      }, gap);
-    }
+    //
+    if (timeout) return;
+    if (ops.leading) func(...args);
+    //
+    timeout = setTimeout(() => {
+      //
+      if (!ops.leading) func(...args);
+      timeout = null;
+      //
+    }, delay);
   };
 }
