@@ -1,34 +1,34 @@
-function debounce(func, gap) {
-  let time = null;
+function debounce(func, delay) {
+  let timeout = null;
 
   return function (...args) {
-    if (time !== null) {
-      clearTimeout(time);
-    }
-    time = setTimeout(() => {
+    //
+    if (timeout) clearTimeout(timeout);
+    //
+    timeout = setTimeout(() => {
+      //
       func(...args);
-      time = null;
-    }, gap);
+      timeout = null;
+      //
+    }, delay);
   };
 }
 
-function opDebounce(func, gap, ops = {}) {
-  let time = null;
-  let called = false;
-
+function opDebounce(func, delay, obj = {}) {
+  //
+  let timeout = null;
+  //
   return function (...args) {
-    if (time !== null) {
-      clearTimeout(time);
-    }
-    if (ops.leading && time === null) {
-      if (!called) {
-        func(...args);
-      }
-      called = true;
-    }
-    time = setTimeout(() => {
-      called = false;
-      time = null;
-    }, gap);
+    //
+    if (timeout) clearTimeout(timeout);
+
+    if (obj.leading && !timeout) func(...args);
+    //
+    timeout = setTimeout(() => {
+      //
+      if (!obj.leading) func(...args);
+      timeout = null;
+      //
+    }, delay);
   };
 }
