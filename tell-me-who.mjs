@@ -16,5 +16,5 @@ guests = guests.map((name, i) => {
 guests.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
 
 guests.forEach((guest, i) => {
-  log(`${i}. ${guest}`);
+  log(`${i+1}. ${guest}`);
 });
