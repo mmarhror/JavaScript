@@ -1,5 +1,4 @@
-import { log } from "console";
-import { readdir, readFile } from "fs/promises";
+import { readdir, readFile, writeFile } from "fs/promises";
 import { join } from "path";
 
 let n = process.argv.slice(2)[0] || ".";
@@ -25,6 +24,8 @@ guests = guests.map((name, i) => {
 
 guests.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
 
-guests.forEach((guest, i) => {
-  log(`${i + 1}. ${guest}`);
+guests = guests.map((guest, i) => {
+  return `${i + 1}. ${guest}`;
 });
+
+await writeFile("vip.txt", guests.join("\n"));
