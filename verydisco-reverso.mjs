@@ -11,4 +11,4 @@ words = words.map((word) => {
   return last + first;
 });
 
-console.log(words.join(""));
+console.log(words.join(" "));
