@@ -1,4 +1,4 @@
-import { readFile } from "node:fs/promises";
+import { readFile } from "fs/promises";
 
 let content = await readFile(process.argv[2], "utf-8");
 
@@ -11,4 +11,4 @@ words = words.map((word) => {
   return last + first;
 });
 
-console.log(words.join(" "));
+console.log(words.join(""));
