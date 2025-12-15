@@ -2,8 +2,6 @@ import { readFile } from "fs/promises";
 
 let content = await readFile(process.argv[2], "utf-8");
 
-console.log(content);
-
 let words = content.split(" ");
 
 words = words.map((word) => {
