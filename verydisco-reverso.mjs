@@ -1,10 +1,6 @@
-import fs from "fs/promises";
+import { readFile } from "node:fs/promises";
 
-let content = await fs.readFile("verydisco.txt", "utf-8", (err) => {
-  if (err) {
-    console.log(err);
-  }
-});
+let content = await readFile(process.argv[2], "utf-8");
 
 let words = content.split(" ");
 
