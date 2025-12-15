@@ -1,4 +1,3 @@
-import { log } from "console";
 import { readFile, writeFile } from "fs/promises";
 
 let args = process.argv.slice(2);
