@@ -1,8 +1,7 @@
 import { readdir, readFile } from "fs/promises";
-import http, { get } from "http";
+import http from "http";
 import { join } from "path";
 
-let e = {};
 let status = true;
 
 let files;
@@ -11,44 +10,44 @@ try {
   files = await readdir("guests");
 } catch (err) {
   status = false;
-  e.error = "server failed";
   console.log(err);
 }
 
 function Handler(req, res) {
   let url = req.url.slice(1);
 
-  if (req.method != "GET") {
-    res.statusCode = 405;
+  if (!status) {
     res.setHeader("Content-Type", "application/json");
-    res.end("method not allowed");
+    res.statusCode = 500;
+    res.end(JSON.stringify({ error: "internal server error" }));
     return;
   }
 
-  if (!status) {
-    res.statusCode = 500;
-    e.error = "internal server error";
+  if (req.method != "GET") {
     res.setHeader("Content-Type", "application/json");
-    res.end(JSON.stringify(e));
+    res.statusCode = 405;
+    res.end(JSON.stringify({ error: "method not allowed" }));
     return;
   }
 
   if (!files.includes(url + ".json")) {
-    res.statusCode = 404;
-    e.error = "guest not found";
     res.setHeader("Content-Type", "application/json");
-    res.end(JSON.stringify(e));
+    res.statusCode = 404;
+    res.end(JSON.stringify({ error: "guest not found" }));
     return;
   }
-
-  let read = readFile(join("guests", url + ".json"), "utf8");
-
   res.setHeader("Content-Type", "application/json");
   res.statusCode = 200;
 
-  read.then((content) => {
-    res.end(content);
-  });
+  readFile(join("guests", url + ".json"), "utf8")
+    .then((content) => res.end(content))
+    .catch((err) => {
+      res.setHeader("Content-Type", "application/json");
+      res.statusCode = 500;
+      console.log(err);
+      res.end(JSON.stringify({ error: "internal server error" }));
+      return;
+    });
 }
 
 const server = http.createServer(Handler);
