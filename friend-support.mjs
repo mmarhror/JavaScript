@@ -18,21 +18,21 @@ function Handler(req, res) {
     return;
   }
 
-  if (!files.includes(url + ".json")) {
-    res.statusCode = 404;
-    res.end(JSON.stringify({ error: "guest not found" }));
-    return;
+  if (!url.includes(".json")) {
   }
 
   res.statusCode = 200;
-
   readFile(join("guests", url + ".json"), "utf8")
     .then((content) => res.end(content))
     .catch((err) => {
-      res.setHeader("Content-Type", "application/json");
-      res.statusCode = 500;
-      console.log(err);
-      res.end(JSON.stringify({ error: "server failed" }));
-      return;
+      if (err === "ENOENT") {
+        res.statusCode = 404;
+        res.end(JSON.stringify({ error: "guest not found" }));
+        return;
+      } else {
+        res.statusCode = 500;
+        console.log(err);
+        res.end(JSON.stringify({ error: "server failed" }));
+      }
     });
 }
