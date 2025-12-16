@@ -16,27 +16,25 @@ try {
 function Handler(req, res) {
   let url = req.url.slice(1);
 
+  res.setHeader("Content-Type", "application/json");
+
   if (!status) {
-    res.setHeader("Content-Type", "application/json");
     res.statusCode = 500;
-    res.end(JSON.stringify({ error: "internal server error" }));
+    res.end(JSON.stringify({ error: "server failed" }));
     return;
   }
 
   if (req.method != "GET") {
-    res.setHeader("Content-Type", "application/json");
     res.statusCode = 405;
     res.end(JSON.stringify({ error: "method not allowed" }));
     return;
   }
 
   if (!files.includes(url + ".json")) {
-    res.setHeader("Content-Type", "application/json");
     res.statusCode = 404;
     res.end(JSON.stringify({ error: "guest not found" }));
     return;
   }
-  res.setHeader("Content-Type", "application/json");
   res.statusCode = 200;
 
   readFile(join("guests", url + ".json"), "utf8")
@@ -45,7 +43,7 @@ function Handler(req, res) {
       res.setHeader("Content-Type", "application/json");
       res.statusCode = 500;
       console.log(err);
-      res.end(JSON.stringify({ error: "internal server error" }));
+      res.end(JSON.stringify({ error: "server failed" }));
       return;
     });
 }
