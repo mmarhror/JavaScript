@@ -7,8 +7,6 @@ server.listen(5000, () => {
   console.log("Listening on port: http://localhost:5000/");
 });
 
-let status = true;
-
 function Handler(req, res) {
   let url = req.url.slice(1);
 
