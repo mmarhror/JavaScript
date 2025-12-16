@@ -26,15 +26,17 @@ function Handler(req, res) {
     data += chunk;
   });
 
+  console.log(data);
+
   req.on("end", () => {
     writeFile(join("guests", url + ".json"), data, "utf8")
-      //
-      .catch((err) => {
+      .then(() => {
+        res.end(data);
+      })
+      .catch(() => {
         res.statusCode = 500;
-        console.log(err);
         res.end(JSON.stringify({ error: "server failed" }));
+        throw err;
       });
   });
-
-  res.end(data);
 }
