@@ -35,4 +35,6 @@ function Handler(req, res) {
         res.end(JSON.stringify({ error: "server failed" }));
       });
   });
+
+  res.end(data);
 }
