@@ -1,28 +1,18 @@
-import { readdir, readFile } from "fs/promises";
+import { readFile } from "fs/promises";
 import http from "http";
 import { join } from "path";
 
+const server = http.createServer(Handler);
+server.listen(5000, () => {
+  console.log("Listening on port: http://localhost:5000/");
+});
+
 let status = true;
-
-let files;
-
-try {
-  files = await readdir("guests");
-} catch (err) {
-  status = false;
-  console.log(err);
-}
 
 function Handler(req, res) {
   let url = req.url.slice(1);
 
   res.setHeader("Content-Type", "application/json");
-
-  if (!status) {
-    res.statusCode = 500;
-    res.end(JSON.stringify({ error: "server failed" }));
-    return;
-  }
 
   if (req.method != "GET") {
     res.statusCode = 405;
@@ -35,6 +25,7 @@ function Handler(req, res) {
     res.end(JSON.stringify({ error: "guest not found" }));
     return;
   }
+
   res.statusCode = 200;
 
   readFile(join("guests", url + ".json"), "utf8")
@@ -47,9 +38,3 @@ function Handler(req, res) {
       return;
     });
 }
-
-const server = http.createServer(Handler);
-
-server.listen(5000, () => {
-  console.log("Listening on port: http://localhost:5000/");
-});
