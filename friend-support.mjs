@@ -25,7 +25,7 @@ function Handler(req, res) {
   readFile(join("guests", url + ".json"), "utf8")
     .then((content) => res.end(content))
     .catch((err) => {
-      if (err === "ENOENT") {
+      if (err.code === "ENOENT") {
         res.statusCode = 404;
         res.end(JSON.stringify({ error: "guest not found" }));
         return;
