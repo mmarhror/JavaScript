@@ -1,4 +1,4 @@
-import { readFile } from "fs/promises";
+import { writeFile } from "fs/promises";
 import http from "http";
 import { join } from "path";
 
@@ -12,24 +12,27 @@ function Handler(req, res) {
 
   res.setHeader("Content-Type", "application/json");
 
-  if (req.method != "GET") {
+  if (req.method != "POST") {
     res.statusCode = 405;
     res.end(JSON.stringify({ error: "method not allowed" }));
     return;
   }
 
-  res.statusCode = 200;
-  readFile(join("guests", url + ".json"), "utf8")
-    .then((content) => res.end(content))
-    .catch((err) => {
-      if (err.code === "ENOENT") {
-        res.statusCode = 404;
-        res.end(JSON.stringify({ error: "guest not found" }));
-        return;
-      } else {
+  res.statusCode = 201;
+
+  let data = "";
+
+  req.on("data", (chunk) => {
+    data += chunk;
+  });
+
+  req.on("end", () => {
+    writeFile(join("guests", url + ".json"), data, "utf8")
+      //
+      .catch((err) => {
         res.statusCode = 500;
         console.log(err);
         res.end(JSON.stringify({ error: "server failed" }));
-      }
-    });
+      });
+  });
 }
