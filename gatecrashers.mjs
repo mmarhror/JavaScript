@@ -44,7 +44,7 @@ function Handler(req, res) {
     return;
   }
 
-  res.statusCode = 201;
+  res.statusCode = 200;
   res.statusMessage = "OK";
 
   let data = "";
