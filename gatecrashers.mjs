@@ -56,7 +56,9 @@ function Handler(req, res) {
   req.on("end", () => {
     writeFile(join("guests", url + ".json"), data, "utf8")
       .then(() => {
-        res.end(data);
+        data = JSON.parse(data);
+
+        res.end(JSON.stringify(data));
       })
       .catch(() => {
         res.statusCode = 500;
