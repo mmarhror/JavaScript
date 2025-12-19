@@ -61,6 +61,8 @@ function Handler(req, res) {
         res.end(JSON.stringify(data));
       })
       .catch(() => {
+        console.log(data);
+
         res.statusCode = 500;
         res.end(JSON.stringify({ error: "server failed" }));
         throw err;
