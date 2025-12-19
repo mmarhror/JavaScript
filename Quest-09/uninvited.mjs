@@ -26,8 +26,6 @@ function Handler(req, res) {
     data += chunk;
   });
 
-  console.log(data);
-
   req.on("end", () => {
     writeFile(join("guests", url + ".json"), data, "utf8")
       .then(() => {
