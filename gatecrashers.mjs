@@ -1,4 +1,4 @@
-import { writeFile } from "fs/promises";
+import { writeFile, mkdir } from "fs/promises";
 import http from "http";
 import { join } from "path";
 
@@ -35,8 +35,6 @@ function Handler(req, res) {
   credentials = credentials.split(" ")[1];
   credentials = Buffer.from(credentials, "base64").toString("utf-8");
 
-  console.log(credentials);
-
   const [username, password] = credentials.split(":");
 
   if (!auths.includes(username) || password !== "abracadabra") {
@@ -53,7 +51,8 @@ function Handler(req, res) {
     data += chunk;
   });
 
-  req.on("end", () => {
+  req.on("end", async () => {
+    await mkdir("guests");
     writeFile(join("guests", url + ".json"), data, "utf8")
       .then(() => {
         data = JSON.parse(data);
