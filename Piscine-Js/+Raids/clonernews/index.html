@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HackerNews | Terminal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header" id="header">
+      <div class="header-content" id="headerContent">
+        <a href="#" class="logo" id="logo">
+          <span class="logo-text">HackerNews_Terminal</span>
+        </a>
+        <div class="terminal-prompt" id="terminalPrompt">
+          <span class="prompt-user" id="promptUser">root</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Wrapper for two-column layout -->
+    <div class="main-wrapper">
+      <!-- Main Content -->
+      <main class="container" id="mainContainer">
+        <!-- Status Bar -->
+        <div class="status-bar" id="statusBar">
+          <div class="status-item" id="connectionStatus">
+            <span class="status-label">[STATUS]</span>
+            <span class="status-value" id="statusValue">CONNECTED</span>
+          </div>
+        </div>
+
+        <!-- Live Updates Notification -->
+        <div class="live-updates" id="liveUpdates" style="display: none">
+          <span id="liveUpdatesText">New posts available</span>
+          <button id="liveUpdatesBtn">View</button>
+        </div>
+
+        <!-- Story List -->
+        <div class="story-list" id="storyList"></div>
+
+        <!-- Load More Button -->
+        <button id="loadMoreBtn" class="load-more" style="display: none">
+          Load More
+        </button>
+
+        <div class="loading" id="loadingIndicator" style="display: none">
+          Loading...
+        </div>
+      </main>
+
+      <!-- Updates Panel on the right -->
+      <aside class="updates-panel">
+        <div class="updates-header">
+          <span class="updates-title">
+            [LIVE_UPDATES]
+            <button id="show-updates">show</button>
+          </span>
+        </div>
+        <div class="updates-content" id="updates-content"></div>
+      </aside>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+      <p class="footer-text">
+        // Powered by
+        <a
+          href="https://github.com/HackerNews/API"
+          class="footer-link"
+          id="footerLink"
+          target="_blank"
+          >HackerNews API</a
+        >
+        //
+      </p>
+    </footer>
+    <script type="module" src="src/main.js"></script>
+    <script type="module" src="src/updates.js"></script>
+  </body>
+</html>

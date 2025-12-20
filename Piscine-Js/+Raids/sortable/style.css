@@ -1,0 +1,251 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+@media print {
+  .table,
+  .table__body {
+    overflow: visible;
+    height: auto !important;
+    width: auto !important;
+  }
+}
+
+body {
+  min-height: 100vh;
+  background: url(media/html_table.jpg) center / cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main.table {
+  width: 82vw;
+  height: 90vh;
+  background-color: #fff5;
+  backdrop-filter: blur(7px);
+  box-shadow: 0 0.4rem 0.8rem #0005;
+  border-radius: 0.8rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.table__header {
+  width: 100%;
+  background-color: #fff4;
+  padding: 0.8rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.table__header .input-group {
+  width: 35%;
+  height: 100%;
+  background-color: #fff5;
+  padding: 0 0.8rem;
+  border-radius: 2rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: 0.2s;
+}
+
+.table__header .input-group:hover {
+  width: 45%;
+  background-color: #fff8;
+  box-shadow: 0 0.1rem 0.4rem #0002;
+}
+
+.table__header .input-group img {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.table__header .input-group input {
+  width: 100%;
+  padding: 0 0.5rem 0 0.3rem;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.table__header h1 a {
+  text-decoration: none;
+  color: #333;
+  transition: 0.2s ease-in-out;
+  display: inline-block;
+}
+
+.table__header h1 a:hover {
+  color: #6c00bd;
+  transform: scale(1.05);
+  text-shadow: 0 0.1rem 0.4rem #0002;
+}
+.table__header select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: #fff5;
+  color: #333;
+  border: none;
+  padding: 0.6rem 2rem 0.6rem 1rem;
+  border-radius: 2rem;
+  outline: none;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: 0.2s;
+}
+
+.table__header select:hover {
+  background-color: #fff8;
+  box-shadow: 0 0.1rem 0.4rem #0002;
+}
+
+.table__header select option {
+  background-color: #fff;
+  color: #333;
+}
+
+.table__body {
+  width: 95%;
+  flex: 1;
+  background-color: #fffb;
+  margin: 0.8rem auto;
+  border-radius: 0.6rem;
+  overflow: auto;
+  overflow: overlay;
+}
+
+.table__body::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+.table__body::-webkit-scrollbar-thumb {
+  border-radius: 0.5rem;
+  background-color: #0004;
+  visibility: hidden;
+}
+
+.table__body:hover::-webkit-scrollbar-thumb {
+  visibility: visible;
+}
+
+table {
+  width: 100%;
+}
+
+td img {
+  width: 36px;
+  height: 36px;
+  margin-right: 0.5rem;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+table,
+th,
+td {
+  border-collapse: collapse;
+  padding: 1rem;
+  text-align: left;
+}
+
+thead th {
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: #d5d1defe;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #0000000b;
+}
+
+tbody tr:hover {
+  background-color: #fff6 !important;
+}
+
+
+.table__footer {
+  width: 100%;
+  padding: 1rem;
+  background-color: #fff4;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+
+  border-top: 1px solid #fff5;
+
+  flex-shrink: 0;
+}
+
+.table__footer button {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  background-color: #fff5;
+  color: #333;
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: 0.3s ease-in-out;
+}
+
+.pagination-pages {
+  display: flex;
+  gap: 1rem;
+}
+
+.table__footer button:hover {
+  background-color: #fff8;
+  color: #6c00bd;
+  transform: scale(1.1);
+}
+
+.table__footer button.active {
+  background-color: #6c00bd;
+  color: #fff;
+  box-shadow: 0 0.2rem 0.5rem #6c00bd66;
+}
+
+.table__footer button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: transparent;
+}
+
+.table__footer button:disabled:hover {
+  transform: none;
+  background-color: transparent;
+  color: #333;
+}
+
+/* --- RESPONSIVE & ICONS --- */
+@media (max-width: 1000px) {
+  td:not(:first-of-type) {
+    min-width: 12.1rem;
+  }
+}
+

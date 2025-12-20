@@ -1,0 +1,691 @@
+/* ============================================
+   DARK HACKER THEME - CSS VARIABLES
+   ============================================ */
+
+/* Color palette for the hacker terminal aesthetic */
+:root {
+  --bg-primary: #000000; /* Main background - pure black for terminal feel */
+  --bg-secondary: #0a0a0a; /* Secondary background - slightly lighter black */
+  --bg-card: #111111; /* Card background - dark gray for story items */
+  --text-primary: #00ff41; /* Primary text - matrix green */
+  --text-secondary: #00cc33; /* Secondary text - darker green for meta info */
+  --accent-cyan: #00d9ff; /* Accent color - cyan for hover states and links */
+  --text-muted: #666666; /* Muted text - gray for less important info */
+  --border-color: #00ff41; /* Border color - matrix green for outlines */
+  --hover-bg: #1a1a1a; /* Hover background - slightly lighter for interaction */
+}
+
+/* ============================================
+   RESET AND BASE STYLES
+   ============================================ */
+
+/* Reset default browser styles for consistent rendering */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Include padding and border in element dimensions */
+}
+
+/* Body base styles - sets up the terminal aesthetic */
+body {
+  font-family: "JetBrains Mono", "Courier New", monospace; /* Monospace font for terminal look */
+  background-color: var(--bg-primary); /* Pure black background */
+  color: var(--text-primary); /* Matrix green text */
+  line-height: 1.6; /* Comfortable reading spacing */
+  min-height: 100vh; /* Full viewport height */
+  position: relative; /* For absolute positioned children */
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* ============================================
+   HEADER SECTION
+   ============================================ */
+
+/* Main header container - sticky positioning for always visible navigation */
+.header {
+  background-color: var(
+    --bg-secondary
+  ); /* Slightly lighter than body for separation */
+  border-bottom: 1px solid var(--border-color); /* Green border for terminal aesthetic */
+  padding: 1rem 0; /* Vertical padding for breathing room */
+  position: sticky; /* Stick to top when scrolling */
+  top: 0; /* Position at top of viewport */
+  z-index: 100; /* Above other content */
+}
+
+/* Header content wrapper - centers and constrains width */
+.header-content {
+  max-width: 1200px; /* Maximum width for large screens */
+  margin: 0 auto; /* Center horizontally */
+  padding: 0 1.5rem; /* Horizontal padding */
+  display: flex; /* Flexbox for horizontal layout */
+  align-items: center; /* Vertically center items */
+  justify-content: space-between; /* Space between logo and terminal prompt */
+  flex-wrap: wrap; /* Allow wrapping on small screens */
+  gap: 1rem; /* Space between wrapped items */
+}
+
+/* Logo container - combines icon and text */
+.logo {
+  display: flex; /* Flexbox for horizontal layout */
+  align-items: center; /* Vertically center icon and text */
+  gap: 0.75rem; /* Space between icon and text */
+  text-decoration: none; /* Remove underline from link */
+  color: var(--text-primary); /* Green text color */
+}
+
+/* Logo text - "HackerNews" branding */
+.logo-text {
+  font-size: 1.25rem; /* Slightly larger than body text */
+  font-weight: 600; /* Semi-bold for emphasis */
+  letter-spacing: -0.5px; /* Tighter spacing for modern look */
+}
+
+/* Terminal prompt - shows fake command for hacker aesthetic */
+.terminal-prompt {
+  font-size: 0.875rem; /* Smaller text size */
+  color: var(--text-primary); /* Green text */
+}
+
+/* ============================================
+   MAIN WRAPPER - TWO COLUMN LAYOUT
+   ============================================ */
+
+/* Added wrapper for main content and updates panel side-by-side */
+.main-wrapper {
+  display: flex;
+  max-width: 1600px;
+  margin: 0 auto;
+  gap: 2rem;
+  padding: 0 1.5rem;
+}
+
+/* ============================================
+   MAIN CONTAINER
+   ============================================ */
+
+/* Main content container - centers and constrains width */
+.container {
+  flex: 1; /* Take remaining space in flex layout */
+  max-width: 1200px; /* Maximum width for large screens */
+  margin: 0; /* Remove auto margin since it's in a flex container */
+  padding: 2rem 0; /* Only vertical padding */
+}
+
+/* ============================================
+   UPDATES PANEL (RIGHT SIDEBAR)
+   ============================================ */
+
+/* Added updates panel styling */
+.updates-panel {
+  width: 300px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 80px;
+  height: fit-content;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+  padding: 2rem 0;
+}
+
+.updates-header {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.updates-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  letter-spacing: 0.5px;
+}
+
+.updates-content {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.update-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--bg-secondary);
+}
+
+.update-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.update-time {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-family: "JetBrains Mono", monospace;
+}
+
+.update-text {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+/* ============================================
+   SHOW UPDATES BUTTON (styled like Load More)
+   ============================================ */
+#show-updates {
+  font-family: "JetBrains Mono", monospace; /* Terminal-style font */
+  font-size: 0.875rem; /* Same as load more button */
+  background-color: var(--bg-secondary); /* Dark background */
+  color: var(--text-primary); /* Matrix green text */
+  border: 1px solid var(--border-color); /* Green border */
+  padding: 0.3rem 1rem; /* Same padding as Load More */
+  cursor: pointer;
+  transition: all 0.2s ease; /* Smooth hover */
+  border-radius: 4px; /* Rounded corners */
+}
+
+/* Hover effect */
+#show-updates:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  background-color: var(--hover-bg);
+  transform: translateY(-2px);
+  box-shadow: 0 0 8px var(--accent-cyan);
+}
+
+/* Active/pressed state */
+#show-updates:active {
+  transform: translateY(0);
+  box-shadow: 0 0 4px var(--accent-cyan);
+  color: var(--text-primary);
+}
+
+/* Custom scrollbar for updates panel */
+.updates-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.updates-panel::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+.updates-panel::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+}
+
+.updates-panel::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-cyan);
+}
+
+/* ============================================
+   STATUS BAR
+   ============================================ */
+
+/* Status bar - shows connection status and story count */
+.status-bar {
+  display: flex; /* Flexbox for horizontal layout */
+  gap: 2rem; /* Space between status items */
+  padding: 1rem; /* Internal padding */
+  background-color: var(--bg-card); /* Dark gray background */
+  border: 1px solid var(--border-color); /* Green border */
+  margin-bottom: 2rem; /* Space below status bar */
+  font-size: 0.875rem; /* Smaller text size */
+  flex-wrap: wrap; /* Allow wrapping on small screens */
+}
+
+/* Individual status item - label and value pair */
+.status-item {
+  display: flex; /* Flexbox for horizontal layout */
+  gap: 0.5rem; /* Space between label and value */
+  align-items: center; /* Vertically center */
+}
+
+/* Status label - "STATUS:" or "STORIES:" */
+.status-label {
+  color: var(--text-secondary); /* Darker green for labels */
+}
+
+/* Status value - "Connected" or story count */
+.status-value {
+  color: var(--accent-cyan); /* Cyan for emphasis */
+}
+
+/* ============================================
+   TYPE CHOOSER
+   ============================================ */
+
+/* Container for type buttons */
+.type-chooser {
+  margin-left: auto; /* Push to the right */
+  display: flex; /* Horizontal layout */
+  gap: 0.5rem; /* Space between buttons */
+}
+
+/* Individual type button */
+.type-btn {
+  font-family: "JetBrains Mono", monospace; /* Terminal-style font */
+  background-color: var(--bg-secondary); /* Dark background */
+  color: var(--text-primary); /* Green text */
+  border: none; /* Remove default border */
+  padding: 0.25rem 0.75rem; /* Padding for click area */
+  font-size: 0.875rem; /* Slightly smaller text */
+  cursor: pointer; /* Pointer on hover */
+  transition: all 0.2s ease; /* Smooth hover transitions */
+  position: relative; /* For underline indicator */
+}
+
+/* Hover state */
+.type-btn:hover {
+  color: var(--accent-cyan); /* Cyan text on hover */
+}
+
+/* Active state - underline below button */
+.type-btn.active::after {
+  content: ""; /* Required for pseudo-element */
+  position: absolute;
+  left: 0;
+  bottom: -3px; /* Slightly below the button text */
+  width: 100%; /* Full width */
+  height: 2px; /* Thickness of underline */
+  background-color: var(--accent-cyan); /* Cyan line */
+  border-radius: 1px; /* Rounded edges for line */
+}
+
+/* Loading indicator - blinking cursor effect */
+.loading-indicator {
+  margin-bottom: 20px;
+  animation: blink 1s infinite; /* Blink animation */
+}
+
+/* Blink animation keyframes - creates terminal cursor effect */
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1; /* Visible */
+  }
+  51%,
+  100% {
+    opacity: 0; /* Hidden */
+  }
+}
+
+/* ============================================
+   STORY LIST
+   ============================================ */
+
+/* Story list container - vertical stack of story items */
+.story-list {
+  display: flex; /* Flexbox for vertical layout */
+  flex-direction: column; /* Stack items vertically */
+  gap: 1rem; /* Space between story items */
+}
+
+/* Loading state message */
+.loading {
+  text-align: center; /* Center text */
+  padding: 3rem; /* Large padding for emphasis */
+  color: var(--text-secondary); /* Darker green */
+  font-size: 1.125rem; /* Slightly larger text */
+}
+
+/* ============================================
+   STORY ITEM (Individual Story Card)
+   ============================================ */
+
+/* Individual story item card */
+.story-item {
+  background-color: var(--bg-card); /* Dark gray background */
+  border: 1px solid var(--border-color); /* Green border */
+  padding: 1.5rem; /* Internal padding */
+  transition: all 0.2s ease; /* Smooth transition for hover effects */
+}
+
+/* Hover state - subtle highlight without glow */
+.story-item:hover {
+  background-color: var(--hover-bg); /* Slightly lighter background */
+  border-color: var(--accent-cyan); /* Cyan border for emphasis */
+  transform: translateX(4px); /* Slight right shift for interaction feedback */
+}
+
+/* Story header - rank and content container */
+.story-header {
+  display: flex; /* Flexbox for horizontal layout */
+  gap: 1rem; /* Space between rank and content */
+}
+
+/* Story rank number - shows position in list */
+.story-rank {
+  color: var(--text-muted); /* Gray color for less emphasis */
+  font-size: 1.125rem; /* Slightly larger text */
+  font-weight: 600; /* Semi-bold */
+  min-width: 2rem; /* Minimum width for alignment */
+  flex-shrink: 0; /* Don't shrink in flex layout */
+}
+
+/* Story content container - title, domain, and meta info */
+.story-content {
+  flex: 1; /* Take remaining space */
+  min-width: 0; /* Allow shrinking below content size */
+}
+
+code {
+  display: block;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Story title - main headline */
+.story-title {
+  font-size: 1.125rem; /* Slightly larger text */
+  font-weight: 600; /* Semi-bold for emphasis */
+  margin-bottom: 0.5rem; /* Space below title */
+  color: var(--text-primary); /* Green text */
+  line-height: 1.4; /* Comfortable line height */
+}
+
+/* Title hover state - change color without glow */
+.story-title:hover {
+  color: var(--accent-cyan); /* Cyan on hover */
+}
+
+.story-link {
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.story-link:hover {
+  color: var(--accent-cyan);
+}
+
+/* Story domain - source website in parentheses */
+.story-domain {
+  font-size: 0.875rem; /* Smaller text */
+  color: var(--text-muted); /* Gray for less emphasis */
+  font-weight: 400; /* Normal weight */
+  margin-left: 0.5rem; /* Space from title */
+}
+
+/* Story metadata container - points, author, time, comments */
+.story-meta {
+  display: flex; /* Flexbox for horizontal layout */
+  flex-wrap: wrap; /* Allow wrapping on small screens */
+  gap: 1rem; /* Space between meta items */
+  font-size: 0.875rem; /* Smaller text */
+  color: var(--text-secondary); /* Darker green */
+}
+
+/* Individual meta item - icon and value pair */
+.meta-item {
+  display: flex; /* Flexbox for horizontal layout */
+  align-items: center; /* Vertically center */
+  gap: 0.375rem; /* Small space between icon and text */
+}
+
+.comments-trigger:hover {
+  cursor: pointer;
+}
+
+/* Meta icon - Unicode symbols for visual indicators */
+.meta-icon {
+  font-size: 0.75rem; /* Smaller icon size */
+}
+
+/* Meta link - clickable author and comments */
+.meta-link {
+  color: var(--text-secondary); /* Darker green */
+  text-decoration: none; /* No underline */
+  transition: color 0.2s ease; /* Smooth color transition */
+}
+
+/* Meta link hover state */
+.meta-link:hover {
+  color: var(--accent-cyan); /* Cyan on hover */
+}
+
+.comment {
+  background: linear-gradient(135deg, #2e2e2e, #121212);
+  border: 2px solid var(--accent-cyan);
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin-left: 45px;
+  margin-bottom: 15px;
+  margin-top: 20px;
+  font-size: 13px;
+  line-height: 1.5;
+  max-width: 650px;
+  word-break: break-word;
+  box-shadow: 0 4px 12px rgba(13, 22, 140, 0.3);
+  transition: all 0.2s ease;
+}
+
+.comment:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 204, 255, 0.5);
+  background: linear-gradient(135deg, #3a3a3a, #0f0f0f);
+}
+
+.comment-meta {
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comment-meta .comment-author {
+  color: #1e90ff;
+}
+
+.comment-meta time {
+  color: #aaa;
+  font-size: 11px;
+  margin-left: 8px;
+}
+
+.comment-text {
+  font-size: 13px;
+  line-height: 1.5;
+  padding-top: 6px;
+  color: #00ff00;
+}
+/* ============================================
+   LOAD MORE BUTTON
+   ============================================ */
+#loadMoreBtn {
+  display: none; /* Hidden by default, shown by JS */
+  font-family: "JetBrains Mono", monospace; /* Terminal-style font */
+  background-color: var(--bg-secondary); /* Dark background */
+  color: var(--text-primary); /* Matrix green text */
+  border: 1px solid var(--border-color); /* Green border for terminal feel */
+  padding: 0.5rem 1rem; /* Comfortable clickable area */
+  font-size: 0.875rem; /* Same as type buttons */
+  cursor: pointer; /* Pointer on hover */
+  transition: all 0.2s ease; /* Smooth hover transition */
+  border-radius: 4px; /* Slight rounding */
+  margin: 2rem auto; /* Center horizontally with space above/below */
+  display: block; /* Make it a block element for centering */
+}
+
+/* Hover effect - glow and accent color */
+#loadMoreBtn:hover {
+  color: var(--accent-cyan); /* Cyan text */
+  border-color: var(--accent-cyan); /* Cyan border */
+  background-color: var(--hover-bg); /* Slightly lighter hover background */
+  transform: translateY(-2px); /* Subtle lift effect */
+  box-shadow: 0 0 8px var(--accent-cyan); /* Neon glow */
+}
+
+/* Active/pressed state */
+#loadMoreBtn:active {
+  transform: translateY(0); /* Reset lift */
+  box-shadow: 0 0 4px var(--accent-cyan); /* Slightly smaller glow */
+  color: var(--text-primary); /* Reset text color */
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+/* Footer section - attribution and links */
+.footer {
+  margin-top: 4rem; /* Large space above footer */
+  padding: 2rem 1.5rem; /* Padding on all sides */
+  text-align: center; /* Center text */
+  border-top: 1px solid var(--border-color); /* Green border at top */
+  background-color: var(--bg-secondary); /* Slightly lighter background */
+}
+
+/* Footer text paragraphs */
+.footer-text {
+  color: var(--text-muted); /* Gray for less emphasis */
+  font-size: 0.875rem; /* Smaller text */
+  margin: 0.25rem 0; /* Small vertical spacing */
+}
+
+/* Footer links - HackerNews API link */
+.footer-link {
+  color: var(--text-secondary); /* Darker green */
+  text-decoration: none; /* No underline */
+  transition: color 0.2s ease; /* Smooth color transition */
+}
+
+/* Footer link hover state */
+.footer-link:hover {
+  color: var(--accent-cyan); /* Cyan on hover */
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+/* Mobile and tablet adjustments for screens smaller than 768px */
+@media (max-width: 768px) {
+  /* Stack header items vertically on small screens */
+  .header-content {
+    flex-direction: column; /* Vertical layout */
+    align-items: flex-start; /* Align to left */
+  }
+
+  /* Smaller terminal prompt text on mobile */
+  .terminal-prompt {
+    font-size: 0.75rem; /* Reduced size */
+  }
+
+  /* Stack story rank and content vertically on mobile */
+  .story-header {
+    flex-direction: column; /* Vertical layout */
+    gap: 0.5rem; /* Smaller gap */
+  }
+
+  /* Remove minimum width constraint on mobile */
+  .story-rank {
+    min-width: auto; /* Auto width */
+  }
+
+  /* Stack status items vertically on mobile */
+  .status-bar {
+    flex-direction: column; /* Vertical layout */
+    gap: 0.5rem; /* Smaller gap */
+  }
+}
+
+/* Added responsive layout for updates panel */
+@media (max-width: 1024px) {
+  .main-wrapper {
+    flex-direction: column;
+  }
+
+  .updates-panel {
+    width: 100%;
+    position: relative;
+    top: 0;
+    max-height: 400px;
+    order: -1; /* Show updates panel above main content on mobile */
+  }
+}
+
+#toast-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+.new-post {
+  border-left: 4px solid #ffffff; /* highlight */
+  background-color: rgba(0, 255, 156, 0.1);
+  animation: highlightFade 3s ease;
+}
+
+@keyframes highlightFade {
+  from {
+    background-color: rgba(0, 255, 156, 0.3);
+  }
+  to {
+    background-color: transparent;
+  }
+}
+/* Background overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Slide popup */
+.popup {
+  background: #fff;
+  width: 70%;
+  max-height: 80%;
+  overflow-y: auto;
+  border-radius: 8px;
+  padding: 16px;
+  position: relative;
+  animation: slideIn 0.3s ease;
+}
+
+/* Close button */
+.popup-close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+/* Slide animation */
+@keyframes slideIn {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Comment time */
+.comment-time {
+  font-size: 12px;
+  color: #777;
+}
+
+/* Dark popup support */
+.popup {
+  background: #111;
+  color: #ddd;
+}

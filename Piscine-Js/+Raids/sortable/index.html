@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sortable</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap"
+      rel="stylesheet"
+    />
+</head>
+
+<body>
+    <main class="table" id="customers_table">
+        <section class="table__header">
+            <h1> <a href="index.html">Sortable</a></h1>
+            <div class="input-group">
+                <input type="search" placeholder="Search Data...">
+                <img src="media/search.png" alt="">
+            </div>
+            <div>
+                <select id="select">
+                    <option value="10">10</option>
+                    <option value="20" selected>20</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                    <option value="all">all</option>
+                </select>
+            </div>
+        </section>
+        <section class="table__body">
+            <table>
+                <thead>
+                    <tr>
+                        <th >Icon</th>
+                        <th  id="name">Name</th>
+                        <th  id="full">Full Name</th>
+                        <th  id="combat">combat</th>
+                        <th  id="durability">durability</th>
+                        <th  id="intelligence">intelligence</th>
+                        <th  id="power">power</th>
+                        <th  id="speed">speed</th>
+                        <th  id="strength">strength</th>
+                        <th  id="race">Race</th>
+                        <th  id="gender">Gender</th>
+                        <th  id="height">Height</th>
+                        <th  id="weight">Weight</th>
+                        <th  id="birth">Place Of Birth</th>
+                        <th  id="alignment">Alignment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </section>
+        <section class="table__footer">
+            <button class="arrow" id="prevPage" disabled> &lt; </button>
+            <div id="pagination" class="pagination-pages"></div>
+            <button class="arrow" id="nextPage"> &gt; </button>
+        </section>
+    </main>
+    <script src="src/sortable.js"></script>
+</body>
+
+</html>
+
+</html>
