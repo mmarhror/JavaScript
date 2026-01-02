@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>DOM-BERMAN</title>
+  </head>
+  <body>
+    <!-- Header with game title and pause -->
+    <div class="header-container">
+      <!-- Top row: title + pause -->
+      <div class="header-top">
+        <p class="title">DOM-BERMAN</p>
+      </div>
+
+      <!-- Stats bar: score, time, lives -->
+      <div class="stats-bar">
+        <div class="stat-item">
+          <span class="label">SCORE</span>
+          <span class="value" id="score">0</span>
+        </div>
+        <div class="stat-item">
+          <span class="label">TIME</span>
+          <span class="value" id="time">0:00</span>
+        </div>
+        <div class="stat-item">
+          <span class="label">LIVES</span>
+          <span class="value" id="lives">3</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Game grid -->
+    <div id="game-container"></div>
+
+    <!-- Pause menu -->
+    <div id="pause-menu">
+      <div class="pause-content">
+        <h2>PAUSED</h2>
+        <button id="resume-button">RESUME</button>
+        <button id="reset-button">RESET</button>
+      </div>
+    </div>
+
+    <script src="script.js" type="module"></script>
+  </body>
+</html>
